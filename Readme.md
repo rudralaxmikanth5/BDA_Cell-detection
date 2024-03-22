@@ -24,8 +24,8 @@ To install the required dependencies, use this command:
 
 ### To Run a multiple files 
     We can run multiple images by adding them to the inputs folder and executing the following commands respectively:
-<code> chmod +x process_image.sh
+<code> chmod +x process_images.sh
 </code>
 
-<code> ./process_image.sh
+<code> ./process_images.sh
 </code>
