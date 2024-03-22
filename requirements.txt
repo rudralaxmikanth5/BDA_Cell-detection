@@ -1,0 +1,6 @@
+numpy==1.23.3
+torch==2.2.1
+torchvision==0.17.1
+celldetection==0.4.2
+numba==0.56.4
+opencv-python==4.9.80
