@@ -20,11 +20,17 @@ class CellDetection:
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         print(img.dtype, img.shape, (img.min(), img.max()))
 
+        start_time = time.time()
         with torch.no_grad():
             x = cd.to_tensor(img, transpose=True, device=self.device, dtype=torch.float32)
             x = x / 255  
             x = x[None] 
             y = self.model(x)
+        end_time = time.time() 
+    
+        execution_time = end_time - start_time
+        print("Output with contours saved")
+        print("Total execution time:", execution_time, "seconds")
 
         contours = y['contours']
         for n in range(len(x)):
@@ -44,10 +50,6 @@ if __name__ == "__main__":
     input_path = "inputs/15340.jpg"
     output_path = "outputfolder/15340_2250.jpg"
     
-    start_time = time.time()  
     output_path = detector.detect_cells_and_save(input_path, output_path, new_width=2500, new_height=2000)  
-    end_time = time.time() 
     
-    execution_time = end_time - start_time
     print("Output image with contours saved at:", output_path)
-    print("Total execution time:", execution_time, "seconds")

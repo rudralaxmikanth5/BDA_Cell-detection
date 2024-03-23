@@ -5,6 +5,7 @@ import cv2
 import celldetection as cd
 from matplotlib import pyplot as plt
 import numpy as np
+import time
 
 class CellDetection:
     def __init__(self):
@@ -18,15 +19,22 @@ class CellDetection:
             img = cv2.resize(img, (new_width, new_height))
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
+        start_time = time.time()  
         with torch.no_grad():
             x = cd.to_tensor(img, transpose=True, device=self.device, dtype=torch.float32)
             x = x / 255
             x = x[None]
             y = self.model(x)
+        end_time = time.time() 
+    
+        execution_time = end_time - start_time
+        print("Output with contours saved ")
+        print("Total execution time:", execution_time, "seconds")
 
         contours = y['contours']
         for n in range(len(x)):
             plt.figure(figsize=(16, 9))
+            plt.gca().set_facecolor('black')  # Set background color to black
             plt.imshow(np.ones((x[n].shape[1], x[n].shape[2], 3), dtype=np.uint8) * 255, cmap='gray')
             cd.plot_contours(contours[n], fill=True)
             for collection in plt.gca().collections:
@@ -51,4 +59,4 @@ if __name__ == "__main__":
     detector = CellDetection()
 
     output_path = detector.detect_cells_and_save(input_path, output_path, new_width=2500, new_height=2000)
-    print("Output image with contours saved at:", output_path)
+    print("Output image saved at:", output_path)

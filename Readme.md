@@ -7,6 +7,7 @@
   - Description: Ubuntu 22.04.4 LTS
   - Release: 22.04
   - Codename: jammy
+- pip Version: 22.3.1
 
 
 
@@ -15,6 +16,15 @@
 To install the required dependencies, use this command:
 
 <code>  pip install -r requirements.txt  </code>
+
+## Dependencies
+
+- NumPy (Version: 1.23.3)
+- PyTorch (Version: 2.2.1)
+- Torchvision (Version: 0.17.1)
+- celldetection (Version: 0.4.2)
+- Numba (Version: 0.56.4)
+- OpenCV-Python (Version: 4.9.80)
 
 
 ## How to Run
