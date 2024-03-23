@@ -24,7 +24,7 @@ To install the required dependencies, use this command:
 - Torchvision (Version: 0.17.1)
 - celldetection (Version: 0.4.2)
 - Numba (Version: 0.56.4)
-- OpenCV-Python (Version: 4.9.80)
+- OpenCV-Python (Version: 4.9.0.80)
 
 
 ## How to Run
