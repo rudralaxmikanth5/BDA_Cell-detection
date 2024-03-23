@@ -39,3 +39,23 @@ To install the required dependencies, use this command:
 
 <code> ./process_images.sh
 </code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Project Member:
+
+[Rudra Laxmi Kanth](https://github.com/rudralaxmikanth5)
+
+### Guide:
+
+[Prof.Sukhendu Das](http://www.cse.iitm.ac.in/~sdas/)
