@@ -33,24 +33,29 @@ class CellDetection:
         print("Total execution time:", execution_time, "seconds")
 
         contours = y['contours']
+        total_contours = 0  # Initialize counter for total contours
+
         for n in range(len(x)):
             plt.figure(figsize=(16, 9))
             plt.imshow(np.ones((x[n].shape[1], x[n].shape[2], 3), dtype=np.uint8) * 255, cmap='gray')  
-            cd.plot_contours(contours[n],fill=True)  
+            cd.plot_contours(contours[n], fill=True)  
             for collection in plt.gca().collections:
                 collection.set_linewidth(0)  
             plt.axis('off')
             plt.savefig(output_img_path, bbox_inches='tight', pad_inches=0)
             plt.close() 
+
+            total_contours += len(contours[n])  # Count contours for current image
+
+        print("Total contours:", total_contours)
         return output_img_path
 
 
 if __name__ == "__main__":
     detector = CellDetection()
-    # input_path = "inputs/15340.jpg"
-    input_path = "combined_image.jpg"
-    # output_path = "outputfolder/15340_2250.jpg"
-    output_path = "comb.jpg"
-    output_path = detector.detect_cells_and_save(input_path, output_path, new_width=4500, new_height=4000)  
+    input_path = "inputs/test.jpg"
+    output_path = "outputfolder/test.jpg"
+    
+    output_path = detector.detect_cells_and_save(input_path, output_path, new_width=500, new_height=1000)  
     
     print("Output image with contours saved at:", output_path)

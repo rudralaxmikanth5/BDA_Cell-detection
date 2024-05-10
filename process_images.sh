@@ -1,10 +1,10 @@
 #!/bin/bash
 
 
-input_folder="inputs"
+input_folder="Performence_Analysis/Main_input"
 
 
-output_folder="outputfolder"
+output_folder="outputfolder-6"
 
 
 mkdir -p "$output_folder"
